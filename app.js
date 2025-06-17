@@ -237,4 +237,150 @@ const counterObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.counter').forEach(counter => {
     counterObserver.observe(counter);
-}); 
+});
+
+// Order Tracking Simulation (Frontend only)
+const orderIdInput = document.getElementById('order-id-input');
+const trackOrderButton = document.getElementById('track-order-button');
+const orderStatusDisplay = document.getElementById('order-status-display');
+const displayedOrderId = document.getElementById('displayed-order-id');
+const orderStatus = document.getElementById('order-status');
+
+// Mock order data (replace with actual backend data in a real application)
+const mockOrders = {
+    'ORDER123': 'In Progress - Assigned to Writer',
+    'ORDER456': 'Under Review - Quality Check',
+    'ORDER789': 'Completed - Ready for Download',
+    'ORDER000': 'Payment Pending - Awaiting Confirmation'
+};
+
+trackOrderButton.addEventListener('click', () => {
+    const orderId = orderIdInput.value.trim().toUpperCase();
+
+    if (orderId) {
+        if (mockOrders[orderId]) {
+            displayedOrderId.textContent = orderId;
+            orderStatus.textContent = mockOrders[orderId];
+            orderStatusDisplay.classList.remove('hidden');
+        } else {
+            displayedOrderId.textContent = orderId;
+            orderStatus.textContent = 'Order not found. Please check your Order ID.';
+            orderStatusDisplay.classList.remove('hidden');
+        }
+    } else {
+        alert('Please enter an Order ID to track.');
+        orderStatusDisplay.classList.add('hidden');
+    }
+});
+
+// Authentication System
+const authModal = document.getElementById('auth-modal');
+const loginBtn = document.getElementById('login-btn');
+const registerBtn = document.getElementById('register-btn');
+const mobileLoginBtn = document.getElementById('mobile-login-btn');
+const mobileRegisterBtn = document.getElementById('mobile-register-btn');
+const closeModal = document.getElementById('close-modal');
+const showRegister = document.getElementById('show-register');
+const showLogin = document.getElementById('show-login');
+const loginForm = document.getElementById('login-form');
+const registerForm = document.getElementById('register-form');
+
+// Show login modal
+function showLoginModal() {
+    authModal.classList.remove('hidden');
+    loginForm.classList.remove('hidden');
+    registerForm.classList.add('hidden');
+}
+
+// Show register modal
+function showRegisterModal() {
+    authModal.classList.remove('hidden');
+    registerForm.classList.remove('hidden');
+    loginForm.classList.add('hidden');
+}
+
+// Close modal
+function closeAuthModal() {
+    authModal.classList.add('hidden');
+}
+
+// Event listeners for modal
+loginBtn.addEventListener('click', showLoginModal);
+registerBtn.addEventListener('click', showRegisterModal);
+mobileLoginBtn.addEventListener('click', showLoginModal);
+mobileRegisterBtn.addEventListener('click', showRegisterModal);
+closeModal.addEventListener('click', closeAuthModal);
+showRegister.addEventListener('click', showRegisterModal);
+showLogin.addEventListener('click', showLoginModal);
+
+// Close modal when clicking outside
+authModal.addEventListener('click', (e) => {
+    if (e.target === authModal) {
+        closeAuthModal();
+    }
+});
+
+// Handle login form submission
+document.getElementById('loginForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-password').value;
+    
+    // Simple validation (in a real app, this would be server-side)
+    if (email && password) {
+        // Store user data (in a real app, this would be a session/token)
+        localStorage.setItem('userLoggedIn', 'true');
+        localStorage.setItem('userName', email.split('@')[0]); // Use email prefix as name
+        
+        // Redirect to dashboard
+        window.location.href = 'dashboard.html';
+    } else {
+        alert('Please fill in all fields');
+    }
+});
+
+// Handle register form submission
+document.getElementById('registerForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const name = document.getElementById('register-name').value;
+    const email = document.getElementById('register-email').value;
+    const password = document.getElementById('register-password').value;
+    const confirmPassword = document.getElementById('register-confirm-password').value;
+    
+    // Simple validation
+    if (!name || !email || !password || !confirmPassword) {
+        alert('Please fill in all fields');
+        return;
+    }
+    
+    if (password !== confirmPassword) {
+        alert('Passwords do not match');
+        return;
+    }
+    
+    if (password.length < 6) {
+        alert('Password must be at least 6 characters long');
+        return;
+    }
+    
+    // Store user data (in a real app, this would be server-side)
+    localStorage.setItem('userLoggedIn', 'true');
+    localStorage.setItem('userName', name);
+    
+    // Redirect to dashboard
+    window.location.href = 'dashboard.html';
+});
+
+// Check if user is already logged in
+function checkLoginStatus() {
+    const isLoggedIn = localStorage.getItem('userLoggedIn');
+    if (isLoggedIn) {
+        // User is logged in, redirect to dashboard
+        window.location.href = 'dashboard.html';
+    }
+}
+
+// Check login status when page loads
+document.addEventListener('DOMContentLoaded', checkLoginStatus);
