@@ -342,4 +342,10 @@ input:focus, textarea:focus, select:focus {
         opacity: 1;
         transform: translateX(0);
     }
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: #4A5568; /* Tailwind's gray-700 */
+    overflow-x: hidden;
 } 
