@@ -406,4 +406,14 @@ html, body {
 }
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+/* Horizontal scroll for subjects cards */
+.subjects-scroll {
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+.subjects-scroll::-webkit-scrollbar {
+  display: none;
 } 
