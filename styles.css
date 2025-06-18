@@ -390,4 +390,20 @@ html, body {
   text-align: center;
   font-weight: bold;
   font-size: 1.2rem;
+}
+
+/* Horizontal scroll for services cards */
+.services-scroll {
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+}
+.services-scroll::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 } 
