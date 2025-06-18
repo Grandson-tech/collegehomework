@@ -362,4 +362,32 @@ html, body {
         -ms-overflow-style: none;
         scrollbar-width: none;
     }
+}
+
+/* Marquee infinite scroll styles */
+.marquee {
+  overflow: hidden;
+  width: 100%;
+  background: transparent;
+}
+.marquee-content {
+  display: flex;
+  width: max-content;
+  animation: marquee-left 20s linear infinite;
+}
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.trust-card {
+  min-width: 250px;
+  margin: 0 1rem;
+  padding: 1rem 2rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem;
 } 
