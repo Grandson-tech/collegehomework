@@ -416,4 +416,24 @@ html, body {
 }
 .subjects-scroll::-webkit-scrollbar {
   display: none;
+}
+
+/* Horizontal full-screen slider for reviews */
+.reviews-slider {
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+.reviews-slider::-webkit-scrollbar {
+  display: none;
+}
+
+/* Remove hover effects for review cards */
+.reviews-slider > div {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.reviews-slider > div:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  transform: none;
 } 
