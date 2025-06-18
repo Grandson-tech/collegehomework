@@ -6,6 +6,7 @@
     <title>Get Started - Collegehomeworkhelp</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -387,6 +388,21 @@
                             <input type="datetime-local" id="deadline" name="deadline" required
                                 class="w-full px-4 py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300">
                         </div>
+                        <div>
+                            <label for="attachments" class="block text-gray-300 mb-2 font-medium">Upload Materials (Optional)</label>
+                            <div class="border-2 border-dashed border-gray-600 rounded-lg p-6 text-center hover:border-yellow-400 transition-colors duration-300">
+                                <input type="file" id="attachments" name="attachments" multiple accept=".pdf,.doc,.docx,.txt,.jpg,.jpeg,.png,.ppt,.pptx,.xls,.xlsx" class="hidden" />
+                                <label for="attachments" class="cursor-pointer">
+                                    <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                                    </svg>
+                                    <p class="text-gray-300 mb-2">Click to upload files or drag and drop</p>
+                                    <p class="text-gray-400 text-sm">PDF, Word, PowerPoint, Excel, Images (Max 10MB each)</p>
+                                </label>
+                            </div>
+                            <div id="fileList" class="mt-3 space-y-2"></div>
+                            <p class="text-gray-400 text-xs mt-2">Accepted files: PDF, DOC, DOCX, TXT, JPG, PNG, PPT, PPTX, XLS, XLSX</p>
+                        </div>
                     </div>
                 </div>
 
@@ -577,23 +593,51 @@
             // Get calculated price
             const calculatedPrice = document.getElementById('totalPrice').textContent;
             
-            // Create WhatsApp message with pricing
-            const whatsappMessage = `New Project Request:%0A%0A*Personal Information*%0AFirst Name: ${data.firstName}%0ALast Name: ${data.lastName}%0AEmail: ${data.email}%0APhone: ${data.phone}%0ACountry: ${data.country}%0A%0A*Project Details*%0AService Type: ${data.serviceType}%0ASubject: ${data.subject}%0APages: ${data.pages}%0AUrgency: ${data.urgency}%0AAcademic Level: ${data.academicLevel}%0A%0A*Pricing*%0AEstimated Total: ${calculatedPrice}%0A%0A*Project Requirements*%0ATitle: ${data.title}%0ADescription: ${data.description}%0ARequirements: ${data.requirements}%0ADeadline: ${data.deadline}%0A%0A*Additional Information*%0ABudget: ${data.budget}%0APreferred Contact: ${data.preferredContact}%0ANotes: ${data.additionalNotes}`;
+            // Get file information
+            const files = document.getElementById('attachments').files;
+            let fileInfo = 'None';
+            if (files.length > 0) {
+                fileInfo = Array.from(files).map(file => `${file.name} (${formatFileSize(file.size)})`).join(', ');
+            }
             
-            // Simulate processing time for better UX
             setTimeout(() => {
-                // Open WhatsApp with pre-filled message
-                window.open(`https://wa.me/2547XXXXXXX?text=${whatsappMessage}`, '_blank');
-                
+                // Generate PDF from form data
+                const doc = new window.jspdf.jsPDF();
+                let pdfText = `Project Request\n\n`;
+                pdfText += `Personal Information\n`;
+                pdfText += `First Name: ${data.firstName}\n`;
+                pdfText += `Last Name: ${data.lastName}\n`;
+                pdfText += `Email: ${data.email}\n`;
+                pdfText += `Phone: ${data.phone}\n`;
+                pdfText += `Country: ${data.country}\n\n`;
+                pdfText += `Project Details\n`;
+                pdfText += `Service Type: ${data.serviceType}\n`;
+                pdfText += `Subject: ${data.subject}\n`;
+                pdfText += `Pages: ${data.pages}\n`;
+                pdfText += `Urgency: ${data.urgency}\n`;
+                pdfText += `Academic Level: ${data.academicLevel}\n\n`;
+                pdfText += `Pricing\nEstimated Total: ${calculatedPrice}\n\n`;
+                pdfText += `Project Requirements\n`;
+                pdfText += `Title: ${data.title}\n`;
+                pdfText += `Description: ${data.description}\n`;
+                pdfText += `Requirements: ${data.requirements}\n`;
+                pdfText += `Deadline: ${data.deadline}\n`;
+                pdfText += `Uploaded Files: ${fileInfo}\n\n`;
+                pdfText += `Additional Information\n`;
+                pdfText += `Budget: ${data.budget}\n`;
+                pdfText += `Preferred Contact: ${data.preferredContact}\n`;
+                pdfText += `Notes: ${data.additionalNotes}\n`;
+                doc.setFontSize(12);
+                doc.text(pdfText, 10, 10);
+                doc.save(`Project_Request_${data.firstName}_${data.lastName}.pdf`);
+
                 // Show success message
-                alert('Thank you! Your project request has been submitted. We will contact you within 24 hours with a detailed quote.');
-                
+                alert('Thank you! Your project request has been submitted. A PDF has been downloaded to your device. Please send this PDF to us via WhatsApp or email.');
+
                 // Reset form
                 this.reset();
-                
                 // Reset pricing
                 calculatePricing();
-                
                 // Reset button state
                 submitBtn.disabled = false;
                 submitText.textContent = 'Submit Project Request';
@@ -637,6 +681,123 @@
 
         // Initialize pricing calculation
         calculatePricing();
+
+        // File upload functionality
+        const fileInput = document.getElementById('attachments');
+        const fileList = document.getElementById('fileList');
+        const dropZone = fileInput.parentElement;
+
+        // Handle file selection
+        fileInput.addEventListener('change', handleFiles);
+
+        // Drag and drop functionality
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('border-yellow-400', 'bg-yellow-400/10');
+        });
+
+        dropZone.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('border-yellow-400', 'bg-yellow-400/10');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('border-yellow-400', 'bg-yellow-400/10');
+            const files = e.dataTransfer.files;
+            handleFileList(files);
+        });
+
+        function handleFiles(e) {
+            const files = e.target.files;
+            handleFileList(files);
+        }
+
+        function handleFileList(files) {
+            const maxSize = 10 * 1024 * 1024; // 10MB
+            const allowedTypes = [
+                'application/pdf',
+                'application/msword',
+                'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                'text/plain',
+                'image/jpeg',
+                'image/png',
+                'application/vnd.ms-powerpoint',
+                'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+                'application/vnd.ms-excel',
+                'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+            ];
+
+            fileList.innerHTML = '';
+
+            Array.from(files).forEach((file, index) => {
+                // Validate file size
+                if (file.size > maxSize) {
+                    showFileError(`File "${file.name}" is too large. Maximum size is 10MB.`);
+                    return;
+                }
+
+                // Validate file type
+                if (!allowedTypes.includes(file.type)) {
+                    showFileError(`File "${file.name}" is not a supported file type.`);
+                    return;
+                }
+
+                // Create file item display
+                const fileItem = document.createElement('div');
+                fileItem.className = 'flex items-center justify-between p-3 bg-black/20 rounded-lg border border-gray-600';
+                fileItem.innerHTML = `
+                    <div class="flex items-center space-x-3">
+                        <svg class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                        <div>
+                            <p class="text-gray-300 text-sm font-medium">${file.name}</p>
+                            <p class="text-gray-400 text-xs">${formatFileSize(file.size)}</p>
+                        </div>
+                    </div>
+                    <button type="button" onclick="removeFile(${index})" class="text-red-400 hover:text-red-300 transition-colors duration-200">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                `;
+                fileList.appendChild(fileItem);
+            });
+        }
+
+        function removeFile(index) {
+            const dt = new DataTransfer();
+            const files = fileInput.files;
+            
+            for (let i = 0; i < files.length; i++) {
+                if (i !== index) {
+                    dt.items.add(files[i]);
+                }
+            }
+            
+            fileInput.files = dt.files;
+            handleFiles({ target: fileInput });
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        function showFileError(message) {
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'p-3 bg-red-500/20 border border-red-500/50 rounded-lg text-red-300 text-sm mb-2';
+            errorDiv.textContent = message;
+            fileList.appendChild(errorDiv);
+            
+            setTimeout(() => {
+                errorDiv.remove();
+            }, 5000);
+        }
 
         // Add smooth scrolling for better mobile experience
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
