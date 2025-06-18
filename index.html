@@ -24,6 +24,17 @@
         }
     </script>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #111827 0%, #1F2937 100%);
+        }
+    </style>
 </head>
 <body class="font-sans text-gray-800">
     <!-- Navbar -->
@@ -67,12 +78,12 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="relative pt-24 overflow-hidden">
+    <section id="home" class="relative pt-24 overflow-hidden w-full px-0">
         <!-- Background gradient overlay -->
         <div class="absolute inset-0 bg-gradient-to-r from-black/95 to-gray-900/95 z-10"></div>
         
         <!-- Background image -->
-        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80');"></div>
+        <div class="absolute inset-0 bg-cover bg-center"></div>
         
         <!-- Content -->
         <div class="container mx-auto px-4 py-32 relative z-20">
@@ -179,7 +190,7 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-20 bg-gray-900">
+    <section id="services" class="py-20 bg-gray-900 w-full px-0">
         <div class="container mx-auto px-4">
             <!-- Section Header -->
             <div class="text-center max-w-3xl mx-auto mb-16">
@@ -1487,5 +1498,40 @@
     </footer>
 
     <script src="app.js"></script>
+    <script>
+        // Smooth scrolling for all anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href.length > 1 && document.querySelector(href)) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade-in on scroll for main sections
+        const fadeSections = document.querySelectorAll(
+            '#services, #subjects, #why-us, #testimonials, #faq, #contact'
+        );
+        fadeSections.forEach(section => {
+            section.classList.add('opacity-0', 'translate-y-8', 'transition-all', 'duration-1000');
+        });
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-8');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        fadeSections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
 </body>
 </html>
