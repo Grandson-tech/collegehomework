@@ -153,34 +153,35 @@
                         </svg>
                         Personal Information
                     </h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                        <div class="relative">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label for="firstName" class="block text-gray-300 mb-2 font-medium">First Name *</label>
                             <input type="text" id="firstName" name="firstName" required
-                                class="w-full px-4 py-4 sm:py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300"
-                                placeholder=" ">
-                            <label for="firstName" class="floating-label absolute left-4 top-4 sm:top-3 text-gray-400 pointer-events-none">First Name *</label>
+                                class="w-full px-4 py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300"
+                                placeholder="Enter your first name">
                         </div>
-                        <div class="relative">
+                        <div>
+                            <label for="lastName" class="block text-gray-300 mb-2 font-medium">Last Name *</label>
                             <input type="text" id="lastName" name="lastName" required
-                                class="w-full px-4 py-4 sm:py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300"
-                                placeholder=" ">
-                            <label for="lastName" class="floating-label absolute left-4 top-4 sm:top-3 text-gray-400 pointer-events-none">Last Name *</label>
+                                class="w-full px-4 py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300"
+                                placeholder="Enter your last name">
                         </div>
-                        <div class="relative">
+                        <div>
+                            <label for="email" class="block text-gray-300 mb-2 font-medium">Email Address *</label>
                             <input type="email" id="email" name="email" required
-                                class="w-full px-4 py-4 sm:py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300"
-                                placeholder=" ">
-                            <label for="email" class="floating-label absolute left-4 top-4 sm:top-3 text-gray-400 pointer-events-none">Email Address *</label>
+                                class="w-full px-4 py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300"
+                                placeholder="your.email@example.com">
                         </div>
-                        <div class="relative">
+                        <div>
+                            <label for="phone" class="block text-gray-300 mb-2 font-medium">Phone Number *</label>
                             <input type="tel" id="phone" name="phone" required
-                                class="w-full px-4 py-4 sm:py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300"
-                                placeholder=" ">
-                            <label for="phone" class="floating-label absolute left-4 top-4 sm:top-3 text-gray-400 pointer-events-none">Phone Number *</label>
+                                class="w-full px-4 py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300"
+                                placeholder="+1 (555) 123-4567">
                         </div>
                         <div class="sm:col-span-2">
+                            <label for="country" class="block text-gray-300 mb-2 font-medium">Country *</label>
                             <select id="country" name="country" required
-                                class="w-full px-4 py-4 sm:py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300">
+                                class="w-full px-4 py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300">
                                 <option value="">Select your country</option>
                                 <option value="US">United States</option>
                                 <option value="CA">Canada</option>
@@ -202,10 +203,11 @@
                         </svg>
                         Project Details
                     </h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
+                            <label for="serviceType" class="block text-gray-300 mb-2 font-medium">Service Type *</label>
                             <select id="serviceType" name="serviceType" required
-                                class="w-full px-4 py-4 sm:py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300">
+                                class="w-full px-4 py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300">
                                 <option value="">Select a service</option>
                                 <option value="research-paper">Research Paper</option>
                                 <option value="thesis">Thesis & Dissertation</option>
@@ -216,21 +218,22 @@
                                 <option value="class-management">Class Management</option>
                             </select>
                         </div>
-                        <div class="relative">
+                        <div>
+                            <label for="subject" class="block text-gray-300 mb-2 font-medium">Subject/Field *</label>
                             <input type="text" id="subject" name="subject" required
-                                class="w-full px-4 py-4 sm:py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300"
-                                placeholder=" ">
-                            <label for="subject" class="floating-label absolute left-4 top-4 sm:top-3 text-gray-400 pointer-events-none">Subject/Field *</label>
-                        </div>
-                        <div class="relative">
-                            <input type="number" id="pages" name="pages" min="1" max="100" required
-                                class="w-full px-4 py-4 sm:py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300"
-                                placeholder=" ">
-                            <label for="pages" class="floating-label absolute left-4 top-4 sm:top-3 text-gray-400 pointer-events-none">Number of Pages *</label>
+                                class="w-full px-4 py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300"
+                                placeholder="e.g., Psychology, Business, Engineering">
                         </div>
                         <div>
+                            <label for="pages" class="block text-gray-300 mb-2 font-medium">Number of Pages *</label>
+                            <input type="number" id="pages" name="pages" min="1" max="100" required
+                                class="w-full px-4 py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300"
+                                placeholder="Enter number of pages">
+                        </div>
+                        <div>
+                            <label for="urgency" class="block text-gray-300 mb-2 font-medium">Urgency Level *</label>
                             <select id="urgency" name="urgency" required
-                                class="w-full px-4 py-4 sm:py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300">
+                                class="w-full px-4 py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300">
                                 <option value="">Select urgency</option>
                                 <option value="standard">Standard (7-14 days)</option>
                                 <option value="urgent">Urgent (3-7 days)</option>
@@ -239,8 +242,9 @@
                             </select>
                         </div>
                         <div class="sm:col-span-2">
+                            <label for="academicLevel" class="block text-gray-300 mb-2 font-medium">Academic Level *</label>
                             <select id="academicLevel" name="academicLevel" required
-                                class="w-full px-4 py-4 sm:py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300">
+                                class="w-full px-4 py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300">
                                 <option value="">Select academic level</option>
                                 <option value="high-school">High School</option>
                                 <option value="undergraduate">Undergraduate</option>
@@ -360,25 +364,28 @@
                         Project Requirements
                     </h2>
                     <div class="space-y-6">
-                        <div class="relative">
+                        <div>
+                            <label for="title" class="block text-gray-300 mb-2 font-medium">Project Title *</label>
                             <input type="text" id="title" name="title" required
-                                class="w-full px-4 py-4 sm:py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300"
-                                placeholder=" ">
-                            <label for="title" class="floating-label absolute left-4 top-4 sm:top-3 text-gray-400 pointer-events-none">Project Title *</label>
+                                class="w-full px-4 py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300"
+                                placeholder="Enter your project title">
                         </div>
                         <div>
+                            <label for="description" class="block text-gray-300 mb-2 font-medium">Project Description *</label>
                             <textarea id="description" name="description" rows="4" required
-                                class="w-full px-4 py-4 sm:py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300"
+                                class="w-full px-4 py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300"
                                 placeholder="Describe your project requirements, research questions, methodology, etc."></textarea>
                         </div>
                         <div>
+                            <label for="requirements" class="block text-gray-300 mb-2 font-medium">Specific Requirements</label>
                             <textarea id="requirements" name="requirements" rows="3"
-                                class="w-full px-4 py-4 sm:py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300"
+                                class="w-full px-4 py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300"
                                 placeholder="Any specific formatting, citation style, sources, or other requirements"></textarea>
                         </div>
                         <div>
+                            <label for="deadline" class="block text-gray-300 mb-2 font-medium">Deadline *</label>
                             <input type="datetime-local" id="deadline" name="deadline" required
-                                class="w-full px-4 py-4 sm:py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300">
+                                class="w-full px-4 py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300">
                         </div>
                     </div>
                 </div>
@@ -393,8 +400,9 @@
                     </h2>
                     <div class="space-y-6">
                         <div>
+                            <label for="budget" class="block text-gray-300 mb-2 font-medium">Budget Range (Optional)</label>
                             <select id="budget" name="budget"
-                                class="w-full px-4 py-4 sm:py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300">
+                                class="w-full px-4 py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300">
                                 <option value="">Select budget range (optional)</option>
                                 <option value="under-100">Under $100</option>
                                 <option value="100-200">$100 - $200</option>
@@ -404,7 +412,7 @@
                             </select>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-300 mb-3">Preferred Contact Method</label>
+                            <label class="block text-gray-300 mb-3 font-medium">Preferred Contact Method</label>
                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                                 <label class="flex items-center p-3 bg-black/20 rounded-lg border border-gray-600 hover:border-yellow-400 transition-colors duration-300 cursor-pointer">
                                     <input type="radio" name="preferredContact" value="email" checked
@@ -424,8 +432,9 @@
                             </div>
                         </div>
                         <div>
+                            <label for="additionalNotes" class="block text-gray-300 mb-2 font-medium">Additional Notes</label>
                             <textarea id="additionalNotes" name="additionalNotes" rows="3"
-                                class="w-full px-4 py-4 sm:py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300"
+                                class="w-full px-4 py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300"
                                 placeholder="Any additional information or special requests"></textarea>
                         </div>
                     </div>
