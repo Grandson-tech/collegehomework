@@ -348,7 +348,7 @@ body {
     font-family: 'Inter', sans-serif;
     color: #4A5568; /* Tailwind's gray-700 */
     overflow-x: hidden;
-}
+} 
 
 html, body {
     overflow-x: hidden;
@@ -396,6 +396,7 @@ html, body {
 .services-scroll {
   -webkit-overflow-scrolling: touch;
   scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
 }
 .services-scroll::-webkit-scrollbar {
   display: none;
@@ -436,4 +437,35 @@ html, body {
 .reviews-slider > div:hover {
   box-shadow: 0 4px 16px rgba(0,0,0,0.3);
   transform: none;
+}
+
+.whyus-scroll {
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+.whyus-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.whyus-scroll > div {
+  min-width: 320px;
+  scroll-snap-align: start;
+}
+.scroll-hint-arrow {
+  pointer-events: none;
+  filter: drop-shadow(0 2px 6px #0008);
+}
+@keyframes bounce-x {
+  0%, 100% { transform: translateY(-50%) translateX(0); }
+  50% { transform: translateY(-50%) translateX(10px); }
+}
+.animate-bounce-x {
+  animation: bounce-x 1.2s infinite;
+}
+.whyus-scroll {
+  padding-bottom: 1rem;
+}
+.whyus-scroll > div {
+  margin-bottom: 0.5rem;
 } 
