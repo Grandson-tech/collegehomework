@@ -373,7 +373,7 @@ html, body {
 .marquee-content {
   display: flex;
   width: max-content;
-  animation: marquee-left 20s linear infinite;
+  animation: marquee-left 10s linear infinite;
 }
 @keyframes marquee-left {
   0% {
