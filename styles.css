@@ -468,4 +468,33 @@ html, body {
 }
 .whyus-scroll > div {
   margin-bottom: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .whyus-scroll > div {
+    min-width: 85vw;
+    padding: 1.25rem 0.75rem;
+    font-size: 1rem;
+  }
+  .whyus-scroll {
+    gap: 0.75rem;
+    padding-bottom: 0.5rem;
+  }
+  .whyus-scroll > div h3 {
+    font-size: 1.1rem;
+  }
+  .whyus-scroll > div ul {
+    font-size: 0.98rem;
+  }
+}
+@media (min-width: 641px) {
+  .whyus-scroll > div {
+    min-width: 320px;
+    padding: 2rem;
+    font-size: 1.1rem;
+  }
+}
+.whyus-scroll > div {
+  box-sizing: border-box;
+  max-height: 100%;
 } 
