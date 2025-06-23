@@ -43,25 +43,60 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Form submission handling
 const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // Get form values
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const service = document.getElementById('service').value;
+        const message = document.getElementById('message').value;
+        // Create WhatsApp message
+        const whatsappMessage = `Full Name: ${name}%0AEmail: ${email}%0AService: ${service}%0AMessage: ${message}`;
+        // Open WhatsApp with pre-filled message
+        window.open(`https://wa.me/2547XXXXXXX?text=${whatsappMessage}`, '_blank');
+        // Reset form
+        contactForm.reset();
+    });
 
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    // Get form values
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const service = document.getElementById('service').value;
-    const message = document.getElementById('message').value;
-    
-    // Create WhatsApp message
-    const whatsappMessage = `Full Name: ${name}%0AEmail: ${email}%0AService: ${service}%0AMessage: ${message}`;
-    
-    // Open WhatsApp with pre-filled message
-    window.open(`https://wa.me/2547XXXXXXX?text=${whatsappMessage}`, '_blank');
-    
-    // Reset form
-    contactForm.reset();
-});
+    // Form validation
+    function validateForm() {
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const service = document.getElementById('service').value;
+        const message = document.getElementById('message').value;
+        if (!name || !email || !service || !message) {
+            alert('Please fill in all fields');
+            return false;
+        }
+        if (!isValidEmail(email)) {
+            alert('Please enter a valid email address');
+            return false;
+        }
+        return true;
+    }
+    function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+    // Add form validation to submit event
+    contactForm.addEventListener('submit', (e) => {
+        if (!validateForm()) {
+            e.preventDefault();
+        }
+    });
+    // Add loading state to form submission
+    contactForm.addEventListener('submit', () => {
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        submitButton.disabled = true;
+        submitButton.innerHTML = 'Sending...';
+        // Reset button state after 2 seconds (simulating API call)
+        setTimeout(() => {
+            submitButton.disabled = false;
+            submitButton.innerHTML = 'Send Message';
+        }, 2000);
+    });
+}
 
 // Intersection Observer for animations
 const observerOptions = {
@@ -124,51 +159,6 @@ window.addEventListener('scroll', () => {
             document.querySelector(`nav a[href*=${sectionId}]`)?.classList.remove('text-primary');
         }
     });
-});
-
-// Form validation
-function validateForm() {
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const service = document.getElementById('service').value;
-    const message = document.getElementById('message').value;
-    
-    if (!name || !email || !service || !message) {
-        alert('Please fill in all fields');
-        return false;
-    }
-    
-    if (!isValidEmail(email)) {
-        alert('Please enter a valid email address');
-        return false;
-    }
-    
-    return true;
-}
-
-function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
-
-// Add form validation to submit event
-contactForm.addEventListener('submit', (e) => {
-    if (!validateForm()) {
-        e.preventDefault();
-    }
-});
-
-// Add loading state to form submission
-contactForm.addEventListener('submit', () => {
-    const submitButton = contactForm.querySelector('button[type="submit"]');
-    submitButton.disabled = true;
-    submitButton.innerHTML = 'Sending...';
-    
-    // Reset button state after 2 seconds (simulating API call)
-    setTimeout(() => {
-        submitButton.disabled = false;
-        submitButton.innerHTML = 'Send Message';
-    }, 2000);
 });
 
 // Add hover effect to service cards
@@ -237,4 +227,99 @@ const counterObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.counter').forEach(counter => {
     counterObserver.observe(counter);
-}); 
+});
+
+// --- Instant Price Calculator Logic ---
+const calcServiceType = document.getElementById('calcServiceType');
+const calcAcademicLevel = document.getElementById('calcAcademicLevel');
+const calcPages = document.getElementById('calcPages');
+const calcUrgency = document.getElementById('calcUrgency');
+const calcBasePrice = document.getElementById('calcBasePrice');
+const calcLevelMultiplier = document.getElementById('calcLevelMultiplier');
+const calcUrgencyFee = document.getElementById('calcUrgencyFee');
+const calcSubtotal = document.getElementById('calcSubtotal');
+const calcDiscount = document.getElementById('calcDiscount');
+const calcTotalPrice = document.getElementById('calcTotalPrice');
+
+if (calcServiceType && calcAcademicLevel && calcPages && calcUrgency && calcBasePrice && calcLevelMultiplier && calcUrgencyFee && calcSubtotal && calcDiscount && calcTotalPrice) {
+    const pricingConfig = {
+        services: {
+            'research-paper': { basePrice: 35 },
+            'thesis': { basePrice: 45 },
+            'literature-review': { basePrice: 32 },
+            'case-study': { basePrice: 30 },
+            'essay': { basePrice: 25 },
+            'proctored-exam': { basePrice: 60 },
+            'class-management': { basePrice: 40 }
+        },
+        academicLevels: {
+            'high-school': { multiplier: 0.8 },
+            'undergraduate': { multiplier: 1.0 },
+            'masters': { multiplier: 1.3 },
+            'phd': { multiplier: 1.6 }
+        },
+        urgency: {
+            'standard': { multiplier: 1.0 },
+            'urgent': { multiplier: 1.3 },
+            'very-urgent': { multiplier: 1.6 },
+            'asap': { multiplier: 2.0 }
+        }
+    };
+
+    function updateCalcPrice() {
+        const serviceType = calcServiceType.value;
+        const pages = parseInt(calcPages.value) || 0;
+        const urgency = calcUrgency.value;
+        const academicLevel = calcAcademicLevel.value;
+
+        // Get base price
+        const service = pricingConfig.services[serviceType];
+        const basePrice = service ? service.basePrice : 0;
+        const basePriceTotal = basePrice * pages;
+
+        // Get academic level multiplier
+        const level = pricingConfig.academicLevels[academicLevel];
+        const levelMultiplier = level ? level.multiplier : 1.0;
+        const levelPrice = basePriceTotal * levelMultiplier;
+
+        // Get urgency multiplier
+        const urgencyConfig = pricingConfig.urgency[urgency];
+        const urgencyMultiplier = urgencyConfig ? urgencyConfig.multiplier : 1.0;
+        const urgencyPrice = levelPrice * urgencyMultiplier;
+
+        // Calculate subtotal
+        const subtotal = urgencyPrice;
+
+        // Calculate discount (10% for new clients)
+        const discount = subtotal * 0.1;
+
+        // Calculate total
+        const total = subtotal - discount;
+
+        // Animate price update (optional, for smoothness)
+        const elements = [calcBasePrice, calcLevelMultiplier, calcUrgencyFee, calcSubtotal, calcDiscount, calcTotalPrice];
+        elements.forEach(element => {
+            if (element) {
+                element.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    element.style.transform = 'scale(1)';
+                }, 150);
+            }
+        });
+
+        // Update pricing display
+        calcBasePrice.textContent = `$${basePrice}`;
+        calcLevelMultiplier.textContent = `${levelMultiplier.toFixed(1)}x`;
+        calcUrgencyFee.textContent = `$${(urgencyPrice - levelPrice).toFixed(0)}`;
+        calcSubtotal.textContent = `$${subtotal.toFixed(0)}`;
+        calcDiscount.textContent = `-$${discount.toFixed(0)}`;
+        calcTotalPrice.textContent = `$${total.toFixed(0)}`;
+    }
+
+    [calcServiceType, calcAcademicLevel, calcPages, calcUrgency].forEach(el => {
+        el.addEventListener('input', updateCalcPrice);
+        el.addEventListener('change', updateCalcPrice);
+    });
+    // Initialize on page load
+    updateCalcPrice();
+} 

@@ -96,6 +96,16 @@
             outline: 2px solid #F59E0B;
             outline-offset: 2px;
         }
+        /* Improve select dropdown visibility for dark mode */
+        select, select:focus {
+            background-color: #18181b !important; /* Tailwind gray-900 */
+            color: #f3f4f6 !important;           /* Tailwind gray-100 */
+            border-color: #facc15 !important;    /* Tailwind yellow-400 */
+        }
+        select option {
+            background-color: #18181b !important;
+            color: #f3f4f6 !important;
+        }
     </style>
 </head>
 <body class="gradient-bg min-h-screen">
