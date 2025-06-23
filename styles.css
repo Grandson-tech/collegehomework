@@ -498,7 +498,7 @@ html, body {
 .whyus-scroll > div {
   box-sizing: border-box;
   max-height: 100%;
-}
+} 
 
 /* Improve select dropdown visibility for dark mode */
 select, select:focus {

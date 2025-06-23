@@ -44,20 +44,20 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Form submission handling
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        // Get form values
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const service = document.getElementById('service').value;
-        const message = document.getElementById('message').value;
-        // Create WhatsApp message
-        const whatsappMessage = `Full Name: ${name}%0AEmail: ${email}%0AService: ${service}%0AMessage: ${message}`;
-        // Open WhatsApp with pre-filled message
-        window.open(`https://wa.me/2547XXXXXXX?text=${whatsappMessage}`, '_blank');
-        // Reset form
-        contactForm.reset();
-    });
+contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    // Get form values
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const service = document.getElementById('service').value;
+    const message = document.getElementById('message').value;
+    // Create WhatsApp message
+    const whatsappMessage = `Full Name: ${name}%0AEmail: ${email}%0AService: ${service}%0AMessage: ${message}`;
+    // Open WhatsApp with pre-filled message
+    window.open(`https://wa.me/2547XXXXXXX?text=${whatsappMessage}`, '_blank');
+    // Reset form
+    contactForm.reset();
+});
 
     // Form validation
     function validateForm() {
@@ -227,7 +227,7 @@ const counterObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.counter').forEach(counter => {
     counterObserver.observe(counter);
-});
+}); 
 
 // --- Instant Price Calculator Logic ---
 const calcServiceType = document.getElementById('calcServiceType');
@@ -249,8 +249,9 @@ if (calcServiceType && calcAcademicLevel && calcPages && calcUrgency && calcBase
             'literature-review': { basePrice: 32 },
             'case-study': { basePrice: 30 },
             'essay': { basePrice: 25 },
-            'proctored-exam': { basePrice: 60 },
-            'class-management': { basePrice: 40 }
+            'proctored-exam': { basePrice: 150 },
+            'professional-exam': { basePrice: 300 },
+            'class-management': { basePrice: 400 }
         },
         academicLevels: {
             'high-school': { multiplier: 0.8 },
