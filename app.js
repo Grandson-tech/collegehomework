@@ -13,6 +13,13 @@ document.addEventListener('click', (e) => {
     }
 });
 
+// Close mobile menu when a link is clicked (for mobile nav)
+document.querySelectorAll('#mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        document.getElementById('mobile-menu').classList.add('hidden');
+    });
+});
+
 // FAQ accordion functionality
 function toggleFAQ(button) {
     const answer = button.nextElementSibling;
