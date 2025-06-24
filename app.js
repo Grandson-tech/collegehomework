@@ -13,10 +13,11 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// Close mobile menu when a link is clicked (for mobile nav)
-document.querySelectorAll('#mobile-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-        document.getElementById('mobile-menu').classList.add('hidden');
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.add('hidden');
+        });
     });
 });
 
