@@ -155,7 +155,7 @@
             </div>
 
             <!-- Form -->
-            <form id="projectForm" class="bg-black/50 backdrop-blur-sm rounded-xl shadow-lg p-6 sm:p-8 border border-yellow-400/20 card-glow">
+            <form id="projectForm" action="https://formspree.io/f/xyzjbwpb" method="POST" class="bg-black/50 backdrop-blur-sm rounded-xl shadow-lg p-6 sm:p-8 border border-yellow-400/20 card-glow">
                 <!-- Personal Information -->
                 <div class="form-section mb-8 sm:mb-12">
                     <h2 class="text-xl sm:text-2xl font-semibold mb-6 text-white flex items-center">
@@ -581,82 +581,6 @@
         document.getElementById('pages').addEventListener('input', calculatePricing);
         document.getElementById('urgency').addEventListener('change', calculatePricing);
         document.getElementById('academicLevel').addEventListener('change', calculatePricing);
-
-        // Form validation and submission
-        document.getElementById('projectForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get submit button elements
-            const submitBtn = document.getElementById('submitBtn');
-            const submitText = document.getElementById('submitText');
-            const submitIcon = document.getElementById('submitIcon');
-            const loadingIcon = document.getElementById('loadingIcon');
-            
-            // Show loading state
-            submitBtn.disabled = true;
-            submitText.textContent = 'Submitting...';
-            submitIcon.classList.add('hidden');
-            loadingIcon.classList.remove('hidden');
-            
-            // Get form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            
-            // Get calculated price
-            const calculatedPrice = document.getElementById('totalPrice').textContent;
-            
-            // Get file information
-            const files = document.getElementById('attachments').files;
-            let fileInfo = 'None';
-            if (files.length > 0) {
-                fileInfo = Array.from(files).map(file => `${file.name} (${formatFileSize(file.size)})`).join(', ');
-            }
-            
-            setTimeout(() => {
-                // Generate PDF from form data
-                const doc = new window.jspdf.jsPDF();
-                let pdfText = `Project Request\n\n`;
-                pdfText += `Personal Information\n`;
-                pdfText += `First Name: ${data.firstName}\n`;
-                pdfText += `Last Name: ${data.lastName}\n`;
-                pdfText += `Email: ${data.email}\n`;
-                pdfText += `Phone: ${data.phone}\n`;
-                pdfText += `Country: ${data.country}\n\n`;
-                pdfText += `Project Details\n`;
-                pdfText += `Service Type: ${data.serviceType}\n`;
-                pdfText += `Subject: ${data.subject}\n`;
-                pdfText += `Pages: ${data.pages}\n`;
-                pdfText += `Urgency: ${data.urgency}\n`;
-                pdfText += `Academic Level: ${data.academicLevel}\n\n`;
-                pdfText += `Pricing\nEstimated Total: ${calculatedPrice}\n\n`;
-                pdfText += `Project Requirements\n`;
-                pdfText += `Title: ${data.title}\n`;
-                pdfText += `Description: ${data.description}\n`;
-                pdfText += `Requirements: ${data.requirements}\n`;
-                pdfText += `Deadline: ${data.deadline}\n`;
-                pdfText += `Uploaded Files: ${fileInfo}\n\n`;
-                pdfText += `Additional Information\n`;
-                pdfText += `Budget: ${data.budget}\n`;
-                pdfText += `Preferred Contact: ${data.preferredContact}\n`;
-                pdfText += `Notes: ${data.additionalNotes}\n`;
-                doc.setFontSize(12);
-                doc.text(pdfText, 10, 10);
-                doc.save(`Project_Request_${data.firstName}_${data.lastName}.pdf`);
-
-                // Show success message
-                alert('Thank you! Your project request has been submitted. A PDF has been downloaded to your device. Please send this PDF to us via WhatsApp or email.');
-
-                // Reset form
-                this.reset();
-                // Reset pricing
-                calculatePricing();
-                // Reset button state
-                submitBtn.disabled = false;
-                submitText.textContent = 'Submit Project Request';
-                submitIcon.classList.remove('hidden');
-                loadingIcon.classList.add('hidden');
-            }, 1500);
-        });
 
         // Set minimum date for deadline (today)
         const deadlineInput = document.getElementById('deadline');
