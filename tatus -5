@@ -1,0 +1,5 @@
+[33mec00e90[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Fix: Add Tailwind CDN to blog post pages for professional styling
+[33mababb62[m Enhance blog section: horizontal scroll on mobile/tablet, update nav links, and fix blog dates to 2025
+[33mc12e256[m Integrate Formspree with honeypot for contact form submissions
+[33mfd80607[m Fix: Ensure mobile menu closes after link click by wrapping in DOMContentLoaded
+[33m1eb9a8b[m Fix: Close mobile menu after clicking a link in mobile nav
