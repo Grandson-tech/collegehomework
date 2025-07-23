@@ -1,0 +1,516 @@
+/* Custom styles to complement Tailwind CSS */
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+section[id] {
+    scroll-margin-top: 4rem;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #007AFF;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0056b3;
+}
+
+/* Mobile menu animation */
+#mobile-menu {
+    transition: all 0.3s ease-in-out;
+}
+
+/* FAQ accordion animation */
+.faq-answer {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Custom focus styles */
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+}
+
+/* Hover effects for service cards */
+.service-card {
+    transition: transform 0.3s ease-in-out;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Custom button hover effect */
+.btn-hover {
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Testimonial card hover effect */
+.testimonial-card {
+    transition: all 0.3s ease-in-out;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Custom utility classes */
+.text-gradient {
+    background: linear-gradient(135deg, #007AFF 0%, #5B21B6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Custom form styles */
+.form-input {
+    transition: all 0.3s ease-in-out;
+}
+
+.form-input:focus {
+    border-color: #007AFF;
+    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+}
+
+/* Custom section spacing */
+.section-spacing {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+/* Custom container max-width */
+.container-custom {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Custom responsive typography */
+@media (max-width: 640px) {
+    h1 {
+        font-size: 2rem;
+    }
+    h2 {
+        font-size: 1.75rem;
+    }
+    h3 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Custom link styles */
+.link-hover {
+    position: relative;
+}
+
+.link-hover::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: #007AFF;
+    transition: width 0.3s ease-in-out;
+}
+
+.link-hover:hover::after {
+    width: 100%;
+}
+
+/* Custom badge styles */
+.badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+}
+
+.badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom card styles */
+.card {
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom button styles */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-primary {
+    background-color: #007AFF;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom form styles */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #374151;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #D1D5DB;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.form-control:focus {
+    border-color: #007AFF;
+    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+}
+
+/* Custom section styles */
+.section {
+    padding: 5rem 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1F2937;
+    margin-bottom: 1rem;
+}
+
+.section-title p {
+    font-size: 1.125rem;
+    color: #6B7280;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Custom grid styles */
+.grid-custom {
+    display: grid;
+    gap: 2rem;
+}
+
+@media (min-width: 640px) {
+    .grid-custom {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .grid-custom {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Custom spacing utilities */
+.spacing-xs { margin: 0.5rem; }
+.spacing-sm { margin: 1rem; }
+.spacing-md { margin: 2rem; }
+.spacing-lg { margin: 3rem; }
+.spacing-xl { margin: 4rem; }
+
+/* Custom text utilities */
+.text-gradient-primary {
+    background: linear-gradient(135deg, #007AFF 0%, #5B21B6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-secondary {
+    background: linear-gradient(135deg, #5B21B6 0%, #007AFF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Custom animation utilities */
+.animate-fade-up {
+    animation: fadeUp 0.5s ease-out forwards;
+}
+
+.animate-fade-down {
+    animation: fadeDown 0.5s ease-out forwards;
+}
+
+.animate-fade-left {
+    animation: fadeLeft 0.5s ease-out forwards;
+}
+
+.animate-fade-right {
+    animation: fadeRight 0.5s ease-out forwards;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeLeft {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeRight {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: #4A5568; /* Tailwind's gray-700 */
+    overflow-x: hidden;
+} 
+
+html, body {
+    overflow-x: hidden;
+}
+
+@media (max-width: 640px) {
+    ::-webkit-scrollbar {
+        display: none;
+    }
+    body {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+}
+
+/* Marquee infinite scroll styles */
+.marquee {
+  overflow: hidden;
+  width: 100%;
+  background: transparent;
+}
+.marquee-content {
+  display: flex;
+  width: max-content;
+  animation: marquee-left 10s linear infinite;
+}
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.trust-card {
+  min-width: 250px;
+  margin: 0 1rem;
+  padding: 1rem 2rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* Horizontal scroll for services cards */
+.services-scroll {
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+.services-scroll::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Horizontal scroll for subjects cards */
+.subjects-scroll {
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+.subjects-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Horizontal full-screen slider for reviews */
+.reviews-slider {
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+.reviews-slider::-webkit-scrollbar {
+  display: none;
+}
+
+/* Remove hover effects for review cards */
+.reviews-slider > div {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.reviews-slider > div:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  transform: none;
+}
+
+.whyus-scroll {
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+.whyus-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.whyus-scroll > div {
+  min-width: 320px;
+  scroll-snap-align: start;
+}
+.scroll-hint-arrow {
+  pointer-events: none;
+  filter: drop-shadow(0 2px 6px #0008);
+}
+@keyframes bounce-x {
+  0%, 100% { transform: translateY(-50%) translateX(0); }
+  50% { transform: translateY(-50%) translateX(10px); }
+}
+.animate-bounce-x {
+  animation: bounce-x 1.2s infinite;
+}
+.whyus-scroll {
+  padding-bottom: 1rem;
+}
+.whyus-scroll > div {
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .whyus-scroll > div {
+    min-width: 90vw;
+    max-width: 90vw;
+    margin-right: 1rem;
+  }
+  .whyus-scroll {
+    gap: 0;
+    padding-left: 1vw;
+    padding-right: 1vw;
+  }
+  .whyus-scroll > div h3 {
+    font-size: 1.1rem;
+  }
+  .whyus-scroll > div ul {
+    font-size: 0.98rem;
+  }
+}
+@media (min-width: 641px) {
+  .whyus-scroll > div {
+    min-width: 320px;
+    padding: 2rem;
+    font-size: 1.1rem;
+  }
+}
+.whyus-scroll > div {
+  box-sizing: border-box;
+  max-height: 100%;
+} 
+
+/* Improve select dropdown visibility for dark mode */
+select, select:focus {
+    background-color: #18181b !important; /* Tailwind gray-900 */
+    color: #f3f4f6 !important;           /* Tailwind gray-100 */
+    border-color: #facc15 !important;    /* Tailwind yellow-400 */
+}
+select option {
+    background-color: #18181b !important;
+    color: #f3f4f6 !important;
+} 

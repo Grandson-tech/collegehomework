@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started - Collegehomeworkhelp</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8B5CF6',
+                        accent: '#10B981',
+                        secondary: '#6366F1'
+                    },
+                    fontFamily: {
+                        'serif': ['DM Serif Display', 'serif'],
+                        'sans': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #111827 0%, #1F2937 100%);
+        }
+        .card-glow {
+            box-shadow: 0 0 30px rgba(251, 191, 36, 0.1);
+        }
+        .form-input:focus {
+            box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.1);
+        }
+        .form-input {
+            transition: all 0.3s ease;
+        }
+        .form-input:focus {
+            transform: translateY(-1px);
+        }
+        .pricing-card {
+            transition: all 0.3s ease;
+        }
+        .pricing-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(251, 191, 36, 0.15);
+        }
+        .step-indicator {
+            transition: all 0.3s ease;
+        }
+        .step-indicator.active {
+            background: linear-gradient(135deg, #F59E0B, #FBBF24);
+        }
+        .form-section {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .floating-label {
+            transition: all 0.3s ease;
+        }
+        .form-input:focus + .floating-label,
+        .form-input:not(:placeholder-shown) + .floating-label {
+            transform: translateY(-25px) scale(0.85);
+            color: #F59E0B;
+        }
+        /* Mobile optimizations */
+        @media (max-width: 640px) {
+            .form-input {
+                font-size: 16px; /* Prevents zoom on iOS */
+            }
+            .pricing-card {
+                margin: 0 -1rem;
+                border-radius: 0;
+            }
+        }
+        /* Touch-friendly improvements */
+        .form-input, select, button, a {
+            min-height: 44px; /* Minimum touch target size */
+        }
+        /* Better focus states for accessibility */
+        .form-input:focus, select:focus, button:focus {
+            outline: 2px solid #F59E0B;
+            outline-offset: 2px;
+        }
+        /* Improve select dropdown visibility for dark mode */
+        select, select:focus {
+            background-color: #18181b !important; /* Tailwind gray-900 */
+            color: #f3f4f6 !important;           /* Tailwind gray-100 */
+            border-color: #facc15 !important;    /* Tailwind yellow-400 */
+        }
+        select option {
+            background-color: #18181b !important;
+            color: #f3f4f6 !important;
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-black/50 backdrop-blur-sm border-b border-yellow-400/20 sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <svg class="w-6 h-6 sm:w-8 sm:h-8 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                    <span class="text-lg sm:text-xl font-bold text-white">Collegehomeworkhelp</span>
+                </a>
+                <a href="index.html" class="text-yellow-400 hover:text-yellow-300 transition-colors duration-300 text-sm sm:text-base">
+                    ← Back to Home
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8 sm:py-16">
+        <div class="max-w-5xl mx-auto">
+            <!-- Header -->
+            <div class="text-center mb-8 sm:mb-12">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-serif text-white mb-4">Get Started</h1>
+                <p class="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto">Tell us about your project and we'll get back to you with a custom quote within 24 hours</p>
+            </div>
+
+            <!-- Progress Indicator -->
+            <div class="mb-8 sm:mb-12">
+                <div class="flex items-center justify-center space-x-2 sm:space-x-4">
+                    <div class="flex items-center">
+                        <div class="step-indicator active w-8 h-8 sm:w-10 sm:h-10 bg-yellow-500 rounded-full flex items-center justify-center">
+                            <span class="text-black font-semibold text-sm sm:text-base">1</span>
+                        </div>
+                        <span class="ml-2 sm:ml-3 text-yellow-400 font-medium text-sm sm:text-base">Project Details</span>
+                    </div>
+                    <div class="w-12 sm:w-16 h-1 bg-gray-600"></div>
+                    <div class="flex items-center">
+                        <div class="step-indicator w-8 h-8 sm:w-10 sm:h-10 bg-gray-600 rounded-full flex items-center justify-center">
+                            <span class="text-gray-300 font-semibold text-sm sm:text-base">2</span>
+                        </div>
+                        <span class="ml-2 sm:ml-3 text-gray-400 font-medium text-sm sm:text-base">Quote & Payment</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <form id="projectForm" action="https://formspree.io/f/mgvypyzl" method="POST" class="bg-black/50 backdrop-blur-sm rounded-xl shadow-lg p-6 sm:p-8 border border-yellow-400/20 card-glow">
+                <!-- Personal Information -->
+                <div class="form-section mb-8 sm:mb-12">
+                    <h2 class="text-xl sm:text-2xl font-semibold mb-6 text-white flex items-center">
+                        <svg class="w-6 h-6 text-yellow-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                        Personal Information
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label for="firstName" class="block text-gray-300 mb-2 font-medium">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required
+                                class="w-full px-4 py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300"
+                                placeholder="Enter your first name">
+                        </div>
+                        <div>
+                            <label for="lastName" class="block text-gray-300 mb-2 font-medium">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required
+                                class="w-full px-4 py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300"
+                                placeholder="Enter your last name">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-300 mb-2 font-medium">Email Address *</label>
+                            <input type="email" id="email" name="email" required
+                                class="w-full px-4 py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300"
+                                placeholder="your.email@example.com">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-gray-300 mb-2 font-medium">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required
+                                class="w-full px-4 py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300"
+                                placeholder="+1 (555) 123-4567">
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label for="country" class="block text-gray-300 mb-2 font-medium">Country *</label>
+                            <select id="country" name="country" required
+                                class="w-full px-4 py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300">
+                                <option value="">Select your country</option>
+                                <option value="US">United States</option>
+                                <option value="CA">Canada</option>
+                                <option value="UK">United Kingdom</option>
+                                <option value="AU">Australia</option>
+                                <option value="DE">Germany</option>
+                                <option value="FR">France</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Details -->
+                <div class="form-section mb-8 sm:mb-12">
+                    <h2 class="text-xl sm:text-2xl font-semibold mb-6 text-white flex items-center">
+                        <svg class="w-6 h-6 text-yellow-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                        Project Details
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label for="serviceType" class="block text-gray-300 mb-2 font-medium">Service Type *</label>
+                            <select id="serviceType" name="serviceType" required
+                                class="w-full px-4 py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300">
+                                <option value="">Select a service</option>
+                                <option value="research-paper">Research Paper</option>
+                                <option value="thesis">Thesis & Dissertation</option>
+                                <option value="literature-review">Literature Review</option>
+                                <option value="case-study">Case Study</option>
+                                <option value="essay">Essay</option>
+                                <option value="proctored-exam">Proctored Exam</option>
+                                <option value="professional-exam">Professional Exam</option>
+                                <option value="class-management">Class Management</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-gray-300 mb-2 font-medium">Subject/Field *</label>
+                            <input type="text" id="subject" name="subject" required
+                                class="w-full px-4 py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300"
+                                placeholder="e.g., Psychology, Business, Engineering">
+                        </div>
+                        <div>
+                            <label for="pages" class="block text-gray-300 mb-2 font-medium">Number of Pages *</label>
+                            <input type="number" id="pages" name="pages" min="1" max="100" required
+                                class="w-full px-4 py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300"
+                                placeholder="Enter number of pages">
+                        </div>
+                        <div>
+                            <label for="urgency" class="block text-gray-300 mb-2 font-medium">Urgency Level *</label>
+                            <select id="urgency" name="urgency" required
+                                class="w-full px-4 py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300">
+                                <option value="">Select urgency</option>
+                                <option value="standard">Standard (7-14 days)</option>
+                                <option value="urgent">Urgent (3-7 days)</option>
+                                <option value="very-urgent">Very Urgent (1-3 days)</option>
+                                <option value="asap">ASAP (24 hours)</option>
+                            </select>
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label for="academicLevel" class="block text-gray-300 mb-2 font-medium">Academic Level *</label>
+                            <select id="academicLevel" name="academicLevel" required
+                                class="w-full px-4 py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300">
+                                <option value="">Select academic level</option>
+                                <option value="high-school">High School</option>
+                                <option value="undergraduate">Undergraduate</option>
+                                <option value="masters">Master's</option>
+                                <option value="phd">PhD</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pricing Table -->
+                <div class="form-section mb-8 sm:mb-12">
+                    <h2 class="text-xl sm:text-2xl font-semibold mb-6 text-white flex items-center">
+                        <svg class="w-6 h-6 text-yellow-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                        </svg>
+                        Pricing Breakdown
+                    </h2>
+                    <div class="bg-black/30 backdrop-blur-sm rounded-xl p-4 sm:p-6 border border-yellow-400/20 pricing-card">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+                            <!-- Pricing Table -->
+                            <div>
+                                <h3 class="text-lg font-semibold mb-4 text-white">Service Pricing</h3>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between items-center py-3 border-b border-gray-700">
+                                        <span class="text-gray-300 text-sm sm:text-base">Base Price (per page)</span>
+                                        <span class="text-yellow-400 font-semibold text-sm sm:text-base" id="basePrice">$0</span>
+                                    </div>
+                                    <div class="flex justify-between items-center py-3 border-b border-gray-700">
+                                        <span class="text-gray-300 text-sm sm:text-base">Academic Level Multiplier</span>
+                                        <span class="text-yellow-400 font-semibold text-sm sm:text-base" id="levelMultiplier">1.0x</span>
+                                    </div>
+                                    <div class="flex justify-between items-center py-3 border-b border-gray-700">
+                                        <span class="text-gray-300 text-sm sm:text-base">Urgency Fee</span>
+                                        <span class="text-yellow-400 font-semibold text-sm sm:text-base" id="urgencyFee">$0</span>
+                                    </div>
+                                    <div class="flex justify-between items-center py-3 border-b border-gray-700">
+                                        <span class="text-gray-300 text-sm sm:text-base">Subtotal</span>
+                                        <span class="text-yellow-400 font-semibold text-sm sm:text-base" id="subtotal">$0</span>
+                                    </div>
+                                    <div class="flex justify-between items-center py-3 border-b border-gray-700">
+                                        <span class="text-gray-300 text-sm sm:text-base">Discount (10% for new clients)</span>
+                                        <span class="text-green-400 font-semibold text-sm sm:text-base" id="discount">-$0</span>
+                                    </div>
+                                    <div class="flex justify-between items-center py-4 bg-yellow-400/10 rounded-lg px-4">
+                                        <span class="text-white font-semibold text-base sm:text-lg">Total Price</span>
+                                        <span class="text-yellow-400 font-bold text-lg sm:text-xl" id="totalPrice">$0</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pricing Details -->
+                            <div>
+                                <h3 class="text-lg font-semibold mb-4 text-white">What's Included</h3>
+                                <div class="space-y-3">
+                                    <div class="flex items-start">
+                                        <svg class="w-5 h-5 text-yellow-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span class="text-gray-300 text-sm sm:text-base">Original, plagiarism-free content</span>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <svg class="w-5 h-5 text-yellow-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span class="text-gray-300 text-sm sm:text-base">Proper citations and references</span>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <svg class="w-5 h-5 text-yellow-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span class="text-gray-300 text-sm sm:text-base">Unlimited revisions (within 7 days)</span>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <svg class="w-5 h-5 text-yellow-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span class="text-gray-300 text-sm sm:text-base">24/7 customer support</span>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <svg class="w-5 h-5 text-yellow-400 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span class="text-gray-300 text-sm sm:text-base">Confidentiality guarantee</span>
+                                    </div>
+                                </div>
+
+                                <!-- Payment Options -->
+                                <div class="mt-6">
+                                    <h4 class="text-md font-semibold mb-3 text-white">Payment Options</h4>
+                                    <div class="space-y-2">
+                                        <div class="flex items-center">
+                                            <svg class="w-5 h-5 text-yellow-400 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                                            </svg>
+                                            <span class="text-gray-300 text-sm sm:text-base">50% upfront, 50% upon completion</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <svg class="w-5 h-5 text-yellow-400 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                                            </svg>
+                                            <span class="text-gray-300 text-sm sm:text-base">PayPal, Credit Card, Bank Transfer</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Requirements -->
+                <div class="form-section mb-8 sm:mb-12">
+                    <h2 class="text-xl sm:text-2xl font-semibold mb-6 text-white flex items-center">
+                        <svg class="w-6 h-6 text-yellow-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                        </svg>
+                        Project Requirements
+                    </h2>
+                    <div class="space-y-6">
+                        <div>
+                            <label for="title" class="block text-gray-300 mb-2 font-medium">Project Title *</label>
+                            <input type="text" id="title" name="title" required
+                                class="w-full px-4 py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300"
+                                placeholder="Enter your project title">
+                        </div>
+                        <div>
+                            <label for="description" class="block text-gray-300 mb-2 font-medium">Project Description *</label>
+                            <textarea id="description" name="description" rows="4" required
+                                class="w-full px-4 py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300"
+                                placeholder="Describe your project requirements, research questions, methodology, etc."></textarea>
+                        </div>
+                        <div>
+                            <label for="requirements" class="block text-gray-300 mb-2 font-medium">Specific Requirements</label>
+                            <textarea id="requirements" name="requirements" rows="3"
+                                class="w-full px-4 py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300"
+                                placeholder="Any specific formatting, citation style, sources, or other requirements"></textarea>
+                        </div>
+                        <div>
+                            <label for="deadline" class="block text-gray-300 mb-2 font-medium">Deadline *</label>
+                            <input type="datetime-local" id="deadline" name="deadline" required
+                                class="w-full px-4 py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300">
+                        </div>
+                        <div>
+                            <label for="attachments" class="block text-gray-300 mb-2 font-medium">Upload Materials (Optional)</label>
+                            <div class="border-2 border-dashed border-gray-600 rounded-lg p-6 text-center hover:border-yellow-400 transition-colors duration-300">
+                                <input type="file" id="attachments" name="attachments" multiple accept=".pdf,.doc,.docx,.txt,.jpg,.jpeg,.png,.ppt,.pptx,.xls,.xlsx" class="hidden" />
+                                <label for="attachments" class="cursor-pointer">
+                                    <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                                    </svg>
+                                    <p class="text-gray-300 mb-2">Click to upload files or drag and drop</p>
+                                    <p class="text-gray-400 text-sm">PDF, Word, PowerPoint, Excel, Images (Max 10MB each)</p>
+                                </label>
+                            </div>
+                            <div id="fileList" class="mt-3 space-y-2"></div>
+                            <p class="text-gray-400 text-xs mt-2">Accepted files: PDF, DOC, DOCX, TXT, JPG, PNG, PPT, PPTX, XLS, XLSX</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Information -->
+                <div class="form-section mb-8 sm:mb-12">
+                    <h2 class="text-xl sm:text-2xl font-semibold mb-6 text-white flex items-center">
+                        <svg class="w-6 h-6 text-yellow-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        Additional Information
+                    </h2>
+                    <div class="space-y-6">
+                        <div>
+                            <label for="budget" class="block text-gray-300 mb-2 font-medium">Budget Range (Optional)</label>
+                            <select id="budget" name="budget"
+                                class="w-full px-4 py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300">
+                                <option value="">Select budget range (optional)</option>
+                                <option value="under-100">Under $100</option>
+                                <option value="100-200">$100 - $200</option>
+                                <option value="200-500">$200 - $500</option>
+                                <option value="500-1000">$500 - $1000</option>
+                                <option value="over-1000">Over $1000</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-gray-300 mb-3 font-medium">Preferred Contact Method</label>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                <label class="flex items-center p-3 bg-black/20 rounded-lg border border-gray-600 hover:border-yellow-400 transition-colors duration-300 cursor-pointer">
+                                    <input type="radio" name="preferredContact" value="email" checked
+                                        class="h-4 w-4 text-yellow-400 focus:ring-yellow-400 border-gray-600 bg-black/30">
+                                    <span class="ml-3 text-gray-300">Email</span>
+                                </label>
+                                <label class="flex items-center p-3 bg-black/20 rounded-lg border border-gray-600 hover:border-yellow-400 transition-colors duration-300 cursor-pointer">
+                                    <input type="radio" name="preferredContact" value="phone"
+                                        class="h-4 w-4 text-yellow-400 focus:ring-yellow-400 border-gray-600 bg-black/30">
+                                    <span class="ml-3 text-gray-300">Phone</span>
+                                </label>
+                                <label class="flex items-center p-3 bg-black/20 rounded-lg border border-gray-600 hover:border-yellow-400 transition-colors duration-300 cursor-pointer">
+                                    <input type="radio" name="preferredContact" value="whatsapp"
+                                        class="h-4 w-4 text-yellow-400 focus:ring-yellow-400 border-gray-600 bg-black/30">
+                                    <span class="ml-3 text-gray-300">WhatsApp</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="additionalNotes" class="block text-gray-300 mb-2 font-medium">Additional Notes</label>
+                            <textarea id="additionalNotes" name="additionalNotes" rows="3"
+                                class="w-full px-4 py-3 rounded-lg border border-gray-600 bg-black/30 text-white form-input focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition-all duration-300"
+                                placeholder="Any additional information or special requests"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Terms and Submit -->
+                <div class="border-t border-gray-700 pt-8">
+                    <div class="flex items-start mb-6">
+                        <input type="checkbox" id="terms" name="terms" required
+                            class="h-5 w-5 text-yellow-400 focus:ring-yellow-400 border-gray-600 rounded bg-black/30 mt-1">
+                        <label for="terms" class="ml-3 block text-sm text-gray-300">
+                            I agree to the <a href="#" class="text-yellow-400 hover:text-yellow-300">terms of service</a> and <a href="#" class="text-yellow-400 hover:text-yellow-300">privacy policy</a>. I understand that this is a request for a quote and I will be contacted within 24 hours.
+                        </label>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button type="submit" id="submitBtn"
+                            class="flex-1 bg-yellow-500 text-black px-6 sm:px-8 py-4 rounded-lg font-semibold hover:bg-yellow-400 transition-all duration-300 flex items-center justify-center transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed">
+                            <span id="submitText">Submit Project Request</span>
+                            <svg id="submitIcon" class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                            <svg id="loadingIcon" class="ml-2 w-5 h-5 animate-spin hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                            </svg>
+                        </button>
+                        <a href="index.html"
+                            class="px-6 sm:px-8 py-4 rounded-lg border border-gray-600 text-gray-300 hover:text-white hover:border-gray-500 transition-all duration-300 text-center">
+                            Cancel
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Pricing configuration
+        const pricingConfig = {
+            services: {
+                'research-paper': { basePrice: 35, name: 'Research Paper' },
+                'thesis': { basePrice: 45, name: 'Thesis & Dissertation' },
+                'literature-review': { basePrice: 32, name: 'Literature Review' },
+                'case-study': { basePrice: 30, name: 'Case Study' },
+                'essay': { basePrice: 25, name: 'Essay' },
+                'proctored-exam': { basePrice: 60, name: 'Proctored Exam' },
+                'professional-exam': { basePrice: 70, name: 'Professional Exam' },
+                'class-management': { basePrice: 40, name: 'Class Management' }
+            },
+            academicLevels: {
+                'high-school': { multiplier: 0.8, name: 'High School' },
+                'undergraduate': { multiplier: 1.0, name: 'Undergraduate' },
+                'masters': { multiplier: 1.3, name: 'Master\'s' },
+                'phd': { multiplier: 1.6, name: 'PhD' }
+            },
+            urgency: {
+                'standard': { multiplier: 1.0, name: 'Standard (7-14 days)' },
+                'urgent': { multiplier: 1.3, name: 'Urgent (3-7 days)' },
+                'very-urgent': { multiplier: 1.6, name: 'Very Urgent (1-3 days)' },
+                'asap': { multiplier: 2.0, name: 'ASAP (24 hours)' }
+            }
+        };
+
+        // Function to calculate pricing
+        function calculatePricing() {
+            const serviceType = document.getElementById('serviceType').value;
+            const pages = parseInt(document.getElementById('pages').value) || 0;
+            const urgency = document.getElementById('urgency').value;
+            const academicLevel = document.getElementById('academicLevel').value;
+
+            // Get base price
+            const service = pricingConfig.services[serviceType];
+            const basePrice = service ? service.basePrice : 0;
+            const basePriceTotal = basePrice * pages;
+
+            // Get academic level multiplier
+            const level = pricingConfig.academicLevels[academicLevel];
+            const levelMultiplier = level ? level.multiplier : 1.0;
+            const levelPrice = basePriceTotal * levelMultiplier;
+
+            // Get urgency multiplier
+            const urgencyConfig = pricingConfig.urgency[urgency];
+            const urgencyMultiplier = urgencyConfig ? urgencyConfig.multiplier : 1.0;
+            const urgencyPrice = levelPrice * urgencyMultiplier;
+
+            // Calculate subtotal
+            const subtotal = urgencyPrice;
+
+            // Calculate discount (10% for new clients)
+            const discount = subtotal * 0.1;
+
+            // Calculate total
+            const total = subtotal - discount;
+
+            // Update pricing display with animation
+            const elements = ['basePrice', 'levelMultiplier', 'urgencyFee', 'subtotal', 'discount', 'totalPrice'];
+            elements.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.style.transform = 'scale(1.1)';
+                    setTimeout(() => {
+                        element.style.transform = 'scale(1)';
+                    }, 150);
+                }
+            });
+
+            document.getElementById('basePrice').textContent = `$${basePrice}`;
+            document.getElementById('levelMultiplier').textContent = `${levelMultiplier.toFixed(1)}x`;
+            document.getElementById('urgencyFee').textContent = `$${(urgencyPrice - levelPrice).toFixed(0)}`;
+            document.getElementById('subtotal').textContent = `$${subtotal.toFixed(0)}`;
+            document.getElementById('discount').textContent = `-$${discount.toFixed(0)}`;
+            document.getElementById('totalPrice').textContent = `$${total.toFixed(0)}`;
+        }
+
+        // Add event listeners for pricing calculation
+        document.getElementById('serviceType').addEventListener('change', calculatePricing);
+        document.getElementById('pages').addEventListener('input', calculatePricing);
+        document.getElementById('urgency').addEventListener('change', calculatePricing);
+        document.getElementById('academicLevel').addEventListener('change', calculatePricing);
+
+        // Set minimum date for deadline (today)
+        const deadlineInput = document.getElementById('deadline');
+        const today = new Date().toISOString().split('T')[0];
+        deadlineInput.min = today;
+
+        // Auto-calculate deadline based on urgency
+        document.getElementById('urgency').addEventListener('change', function() {
+            const urgency = this.value;
+            const deadlineInput = document.getElementById('deadline');
+            const today = new Date();
+            
+            let daysToAdd = 7; // Default to standard
+            
+            switch(urgency) {
+                case 'standard':
+                    daysToAdd = 7;
+                    break;
+                case 'urgent':
+                    daysToAdd = 3;
+                    break;
+                case 'very-urgent':
+                    daysToAdd = 1;
+                    break;
+                case 'asap':
+                    daysToAdd = 0;
+                    break;
+            }
+            
+            const deadline = new Date(today);
+            deadline.setDate(today.getDate() + daysToAdd);
+            deadlineInput.value = deadline.toISOString().slice(0, 16);
+        });
+
+        // Initialize pricing calculation
+        calculatePricing();
+
+        // File upload functionality
+        const fileInput = document.getElementById('attachments');
+        const fileList = document.getElementById('fileList');
+        const dropZone = fileInput.parentElement;
+
+        // Handle file selection
+        fileInput.addEventListener('change', handleFiles);
+
+        // Drag and drop functionality
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('border-yellow-400', 'bg-yellow-400/10');
+        });
+
+        dropZone.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('border-yellow-400', 'bg-yellow-400/10');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('border-yellow-400', 'bg-yellow-400/10');
+            const files = e.dataTransfer.files;
+            handleFileList(files);
+        });
+
+        function handleFiles(e) {
+            const files = e.target.files;
+            handleFileList(files);
+        }
+
+        function handleFileList(files) {
+            const maxSize = 10 * 1024 * 1024; // 10MB
+            const allowedTypes = [
+                'application/pdf',
+                'application/msword',
+                'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                'text/plain',
+                'image/jpeg',
+                'image/png',
+                'application/vnd.ms-powerpoint',
+                'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+                'application/vnd.ms-excel',
+                'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+            ];
+
+            fileList.innerHTML = '';
+
+            Array.from(files).forEach((file, index) => {
+                // Validate file size
+                if (file.size > maxSize) {
+                    showFileError(`File "${file.name}" is too large. Maximum size is 10MB.`);
+                    return;
+                }
+
+                // Validate file type
+                if (!allowedTypes.includes(file.type)) {
+                    showFileError(`File "${file.name}" is not a supported file type.`);
+                    return;
+                }
+
+                // Create file item display
+                const fileItem = document.createElement('div');
+                fileItem.className = 'flex items-center justify-between p-3 bg-black/20 rounded-lg border border-gray-600';
+                fileItem.innerHTML = `
+                    <div class="flex items-center space-x-3">
+                        <svg class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                        <div>
+                            <p class="text-gray-300 text-sm font-medium">${file.name}</p>
+                            <p class="text-gray-400 text-xs">${formatFileSize(file.size)}</p>
+                        </div>
+                    </div>
+                    <button type="button" onclick="removeFile(${index})" class="text-red-400 hover:text-red-300 transition-colors duration-200">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                `;
+                fileList.appendChild(fileItem);
+            });
+        }
+
+        function removeFile(index) {
+            const dt = new DataTransfer();
+            const files = fileInput.files;
+            
+            for (let i = 0; i < files.length; i++) {
+                if (i !== index) {
+                    dt.items.add(files[i]);
+                }
+            }
+            
+            fileInput.files = dt.files;
+            handleFiles({ target: fileInput });
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        function showFileError(message) {
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'p-3 bg-red-500/20 border border-red-500/50 rounded-lg text-red-300 text-sm mb-2';
+            errorDiv.textContent = message;
+            fileList.appendChild(errorDiv);
+            
+            setTimeout(() => {
+                errorDiv.remove();
+            }, 5000);
+        }
+
+        // Add smooth scrolling for better mobile experience
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
