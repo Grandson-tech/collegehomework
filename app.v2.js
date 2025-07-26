@@ -236,9 +236,9 @@ const calcTotalPrice = document.getElementById('calcTotalPrice');
 if (calcServiceType && calcAcademicLevel && calcPages && calcUrgency && calcBasePrice && calcLevelMultiplier && calcUrgencyFee && calcSubtotal && calcDiscount && calcTotalPrice) {
     const pricingConfig = {
         services: {
-            'research-paper': { basePrice: 35 },
-            'thesis': { basePrice: 45 },
-            'literature-review': { basePrice: 32 },
+            'research-paper': { basePrice: 30 },
+            'thesis': { basePrice: 30 },
+            'literature-review': { basePrice: 15 },
             'case-study': { basePrice: 30 },
             'essay': { basePrice: 25 },
             'proctored-exam': { basePrice: 150 },
@@ -253,9 +253,9 @@ if (calcServiceType && calcAcademicLevel && calcPages && calcUrgency && calcBase
         },
         urgency: {
             'standard': { multiplier: 1.0 },
-            'urgent': { multiplier: 1.3 },
-            'very-urgent': { multiplier: 1.6 },
-            'asap': { multiplier: 2.0 }
+            'urgent': { multiplier: 1.15 },
+            'very-urgent': { multiplier: 1.3 },
+            'asap': { multiplier: 1.5 }
         }
     };
 
